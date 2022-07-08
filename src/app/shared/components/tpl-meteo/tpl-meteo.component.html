@@ -1,0 +1,54 @@
+
+<div *ngIf="meteo" class="row justify-content-center">
+  <div class="col-6">
+    <ul type="list-group">
+      <li class="list-group-item">
+        <h4 class="text-center">{{ meteo.dt * 1000 | date:'dd/MM/YYYY' }}</h4>
+      </li>
+      <li class="list-group-item">
+        <span>{{ meteo.weather[0].description }}</span>
+        <span><img src="http://openweathermap.org/img/wn/{{ meteo.weather[0].icon }}@2x.png"
+                   alt="{{ meteo.weather[0].description }}"></span>
+      </li>
+      <li class="list-group-item">
+        <div *ngIf="!meteo.temp.day">
+          Température: {{ meteo.temp }}°C
+        </div>
+        <div *ngIf="meteo.temp.day">
+          <h4>Températures</h4>
+          <ul class="list-group">
+            <li class="list-group-item">Lever: {{ meteo.temp.eve }}°C</li>
+            <li class="list-group-item">Matin: {{ meteo.temp.morn }}°C</li>
+            <li class="list-group-item">Jour: {{ meteo.temp.day }}°C</li>
+            <li class="list-group-item">Nuit: {{ meteo.temp.night }}°C</li>
+            <li class="list-group-item">Min: {{ meteo.temp.min }}°C</li>
+            <li class="list-group-item">Max: {{ meteo.temp.max }}°C</li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div *ngIf="!meteo.feels_like.day">
+          Température ressentie: {{ meteo.feels_like }}°C
+        </div>
+        <div *ngIf="meteo.feels_like.day">
+          <h4>Températures ressenties</h4>
+          <ul class="list-group">
+            <li class="list-group-item">Lever: {{ meteo.feels_like.eve }}°C</li>
+            <li class="list-group-item">Matin: {{ meteo.feels_like.morn }}°C</li>
+            <li class="list-group-item">Jour: {{ meteo.feels_like.day }}°C</li>
+            <li class="list-group-item">Nuit: {{ meteo.feels_like.night }}°C</li>
+          </ul>
+        </div>
+      </li>
+      <li class="list-group-item">Humidité: {{ meteo.humidity }}%</li>
+      <li class="list-group-item">Pression: {{ meteo.pressure }} hPa</li>
+      <li class="list-group-item">Indice UV: {{ meteo.uvi }}</li>
+      <li class="list-group-item">
+        <p>Vent: {{ meteo.wind_speed }}km/h ({{ meteo.wind_deg }}°N)</p>
+        <p>Rafales: {{ meteo.wind_gust }} km/h</p>
+      </li>
+      <li class="list-group-item">Lever: {{ meteo.sunrise * 1000 | date:'HH:mm:ss' }}</li>
+      <li class="list-group-item">Coucher: {{ meteo.sunset * 1000 | date:'HH:mm:ss' }}</li>
+    </ul>
+  </div>
+</div>
