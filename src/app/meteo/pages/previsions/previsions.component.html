@@ -1,0 +1,8 @@
+<h1 class="text-center">Prévisions</h1>
+<h2 class="text-center">{{ ville.nom }}</h2>
+
+<div *ngIf="meteo">
+  <div *ngFor="let day of meteo.daily">
+    <app-tpl-meteo [meteo]="day"></app-tpl-meteo>
+  </div>
+</div>

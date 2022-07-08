@@ -1,0 +1,6 @@
+/* toujours mettre des dimensions à la carte sinon elle ne s'affiche pas */
+#map, #map2 {
+  height: 400px;
+  width: 100%;
+  max-width: 1200px;
+}
